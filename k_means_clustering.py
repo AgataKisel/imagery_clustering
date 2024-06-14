@@ -36,7 +36,7 @@ def kmeans(input_path: str, num_clusters: int, output_path: str) -> int:
     
     num_rasters = img_ds.RasterCount
 
-    img = imd_ds.ReadAsArray()
+    img = img_ds.ReadAsArray()
     img = np.moveaxis(img, 0, -1)
     
     X = img.reshape((-1, num_rasters))
@@ -50,7 +50,7 @@ def kmeans(input_path: str, num_clusters: int, output_path: str) -> int:
     format = "GTiff"
     driver = gdal.GetDriverByName(format)
     
-    out_data_raster = driver.Create(output_path, img_ds.RasterYSize, img_ds.RasterXSize, 1, gdal.GDT_Byte)
+    out_data_raster = driver.Create(output_path, img_ds.RasterXSize, img_ds.RasterYSize, 1, gdal.GDT_Byte)
     out_data_raster.SetGeoTransform(img_ds.GetGeoTransform())
     out_data_raster.SetProjection(img_ds.GetProjection())
     
