@@ -1,9 +1,9 @@
 import numpy as np
-from sklearn.cluster import KMeans, OPTICS
+from sklearn.cluster import KMeans
 from osgeo import gdal, gdal_array 
 import os
 
-def kmeans(input_path: str, num_clusters: int=2, init: str="k-means++", max_iter: int=300, algorithm: str="lloyd", output_path: str) -> int:
+def kmeans(input_path: str, output_path: str, num_clusters: int=2, init: str="k-means++", max_iter: int=300, algorithm: str="lloyd") -> int:
     """
     Performs k-means clustering of any gdal-compatible raster
     
