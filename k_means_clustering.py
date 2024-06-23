@@ -64,6 +64,8 @@ def kmeans(input_path: str, output_path: str, num_clusters: int=2, init: str="k-
     driver = gdal.GetDriverByName(format)
 
     try:
+        if num_rasters == 1:
+            X_cluster = np.moveaxis(X_cluster, 0, 1)
         out_data_raster = driver.Create(output_path, img_ds.RasterXSize, img_ds.RasterYSize, 1, gdal.GDT_Byte)
         out_data_raster.SetGeoTransform(img_ds.GetGeoTransform())
         out_data_raster.SetProjection(img_ds.GetProjection())
