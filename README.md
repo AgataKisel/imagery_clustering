@@ -1,3 +1,3 @@
 # imagery_clustering
-pyhon script for clustering images
-hfhhfh
+python script for clustering images
+
