@@ -54,7 +54,7 @@ def kmeans(input_path: str, output_path: str, num_clusters: int=2, init: str="k-
     X = img.reshape((-1, num_rasters))
     
     try:
-        model = KMeans(n_clusters=num_clusters)
+        model = KMeans(n_clusters=num_clusters, init=init, max_iter=max_iter, algorithm=algorithm)
         X_cluster = model.fit_predict(X)
         X_cluster = X_cluster.reshape(img.shape[:2])
     except: 
